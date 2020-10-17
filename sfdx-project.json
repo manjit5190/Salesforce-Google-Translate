@@ -1,0 +1,11 @@
+{
+  "packageDirectories": [
+    {
+      "path": "google-translate",
+      "default": true
+    }
+  ],
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "49.0"
+}

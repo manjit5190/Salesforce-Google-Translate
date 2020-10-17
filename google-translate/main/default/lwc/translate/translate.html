@@ -1,0 +1,47 @@
+<template>
+  <div
+    class="slds-box_x-small"
+    style="min-width: 400px; min-height: 300px; background-color: white"
+  >
+    <lightning-layout horizontal-align="spread" multiple-rows>
+      <lightning-layout-item size="12">
+        <lightning-button-menu
+          alternative-text={translateButtonLabel}
+          label={translateButtonLabel}
+          onselect={handleTranslate}
+          variant="container"
+        >
+          <template for:each={languageMenuItems} for:item="lang">
+            <lightning-menu-item
+              key={lang.value}
+              label={lang.label}
+              value={lang.value}
+            >
+            </lightning-menu-item>
+          </template>
+        </lightning-button-menu>
+      </lightning-layout-item>
+      <lightning-layout-item class="slds-p-top_medium" size="12">
+        <template if:true={isLoading}>
+          <lightning-spinner
+            alternative-text="Translating..."
+            variant="base"
+          ></lightning-spinner>
+        </template>
+        <template if:true={isHTML}>
+          <lightning-formatted-rich-text
+            value={translatedValue}
+          ></lightning-formatted-rich-text>
+        </template>
+        <template if:false={isHTML}>
+          <lightning-formatted-text
+            value={translatedValue}
+          ></lightning-formatted-text>
+        </template>
+      </lightning-layout-item>
+      <lightning-layout-item class="slds-p-top_medium" size="12">
+        <img alt="Powered by Google translate" src={attributionImage} />
+      </lightning-layout-item>
+    </lightning-layout>
+  </div>
+</template>
